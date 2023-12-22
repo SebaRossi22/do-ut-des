@@ -22,8 +22,8 @@ npm install
 npm run dev
 ```
 
-### Compile and Minify for Production
+### Install axios
 
 ```sh
-npm run build
+npm install axios
 ```
