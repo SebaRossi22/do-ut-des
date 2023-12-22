@@ -14,6 +14,8 @@ See [Vite Configuration Reference](https://vitejs.dev/config/).
 
 https://colab.research.google.com/drive/1fIrHqwlFwbkMItbJL_Z6qMhltbjdUgib?usp=sharing
 
+Remember to change the path in Project.vue and Q&Acard.vue components with the path returned from the flask-ngrok server
+
 ## Project Setup
 
 ```sh
