@@ -10,6 +10,10 @@ This template should help get you started developing with Vue 3 in Vite.
 
 See [Vite Configuration Reference](https://vitejs.dev/config/).
 
+## Colab Server Link
+
+https://colab.research.google.com/drive/1fIrHqwlFwbkMItbJL_Z6qMhltbjdUgib?usp=sharing
+
 ## Project Setup
 
 ```sh
