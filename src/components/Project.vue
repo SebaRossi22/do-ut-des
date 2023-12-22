@@ -8,6 +8,9 @@
         <strong role="status">Loading...</strong>
         <div class="spinner-border ms-auto" aria-hidden="true"></div>
       </div>
+      <div v-if="mancanza" class="alert alert-danger" role="alert">
+        Inserisci file .txt!
+      </div>
       <template v-for="(q, i) in questions">
         <qaCard :question="q" :answer="answers[i]"></qaCard>
       <br />
@@ -28,6 +31,7 @@
         questions: [],
         answers: [],
         loading: false,
+        mancanza: false,
       };
     },
     components: {
@@ -37,6 +41,7 @@
       sendFile() {
         this.selectedFile = this.$refs.fileInput.files[0];
         if (this.selectedFile) {
+          this.mancanza = false;
           const fileReader = new FileReader();
 
           fileReader.onload = (e) => {
@@ -50,7 +55,7 @@
 
           fileReader.readAsText(this.selectedFile);
         } else {
-          console.warn('Nessun file selezionato.');
+          this.mancanza = true;
         }
       },
       addFile(payload) {
