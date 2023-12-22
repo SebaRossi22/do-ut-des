@@ -1,7 +1,7 @@
 <template>
     <div class="container">
       <div v-if="!loading" class="input-group mb-3">
-        <input type="file" class="form-control" ref="fileInput">
+        <input type="file" accept=".txt" class="form-control" ref="fileInput">
         <button type="button" class="btn btn-primary" @click="sendFile()">Upload</button>
       </div>
       <div v-else class="d-flex align-items-center">
