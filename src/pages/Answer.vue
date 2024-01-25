@@ -65,10 +65,13 @@
         //Svuotiamo le due varibili
         this.fileContent = "";
         this.risposta = "";
+        this.selectedFile = null;
         //Assegnamo il nuovo file
         this.selectedFile = this.$refs.fileInput.files[0];
         //Prendiamo il nome del file
-        this.nomeTxt = this.$refs.fileInput.files[0].name;
+        if(this.selectedFile != null){
+          this.nomeTxt = this.$refs.fileInput.files[0].name;
+        }
         //Controlliamo se il file è stato selezionato
         if (this.selectedFile) {
           this.mancanza = false;
@@ -109,7 +112,7 @@
         //Inviata la richiesta verrà mostrato il componente di loading
         this.loading = true;
         //Percorso a cui puntare per la richiesta
-        const path = 'https://646c-35-187-228-90.ngrok-free.app/answers';
+        const path = 'https://38af-35-204-54-48.ngrok-free.app/answers';
         //Utilizziamo axios per fare una richiesta di tipo post passando il percorso e il payload
         axios.post(path, payload)
         .then((res) => {
