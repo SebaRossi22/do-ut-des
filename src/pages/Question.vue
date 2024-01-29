@@ -94,7 +94,7 @@
       },
       //Funzione per scomporre la risposta del modello in domande e risposte
       insertQA(text){
-        //Svuotiamo di due vettori
+        //Svuotiamo i due vettori
         this.questions = [];
         this.answers = [];
         //Separiamo il testo in base al carattere Q
