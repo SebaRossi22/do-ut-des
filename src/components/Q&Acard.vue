@@ -82,7 +82,7 @@ export default {
               answer: sistema.toString()
             };
         //Percorso a cui puntare per la richiesta
-        const path = 'https://a517-34-16-55-238.ngrok-free.app/similar';
+        const path = 'https://502c-34-31-69-109.ngrok-free.app/similar';
         //Utilizziamo axios per fare una richiesta di tipo post passando il percorso e il payload
         axios.post(path, payload)
         .then((res) => {

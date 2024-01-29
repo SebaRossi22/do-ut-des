@@ -19,7 +19,7 @@
           <!--Inoltre, se il file è presente, viene mostrato un input dove l'utente può inserire la sua domanda-->
           <div class="input-group mb-3">
             <input v-model="domanda" type="text" class="form-control" placeholder="Inserisci la tua domanda" aria-describedby="button">
-            <button class="btn btn-primary" type="button" id="button" @click="question()">Rispondi</button>
+            <button class="btn btn-primary" type="button" id="button" @click="question()">Chiedi</button>
           </div>
           <!--Se si preme il pulsante soprastante ma non viene inserita una domanda da fare al modello, viene mostrato questo alert-->
           <div v-if="mancanzaD" class="alert alert-danger" role="alert">
@@ -62,19 +62,17 @@
     methods: {
       //Funzione per caricare il file txt
       selectFile() {
-        //Svuotiamo le due varibili
+        //Svuotiamo le varibili
         this.fileContent = "";
         this.risposta = "";
         this.selectedFile = null;
         //Assegnamo il nuovo file
         this.selectedFile = this.$refs.fileInput.files[0];
-        //Prendiamo il nome del file
-        if(this.selectedFile != null){
-          this.nomeTxt = this.$refs.fileInput.files[0].name;
-        }
         //Controlliamo se il file è stato selezionato
-        if (this.selectedFile) {
+        if(this.selectedFile != null){
           this.mancanza = false;
+          //Prendiamo il nome del file
+          this.nomeTxt = this.$refs.fileInput.files[0].name;
           //Creiamo un nuovo oggetto per leggere i file
           const fileReader = new FileReader();
           //Quando il file è stato completamente letto, l'evento onload viene attivato e la funzione di callback assegnata viene eseguita
@@ -112,7 +110,7 @@
         //Inviata la richiesta verrà mostrato il componente di loading
         this.loading = true;
         //Percorso a cui puntare per la richiesta
-        const path = 'https://a517-34-16-55-238.ngrok-free.app/answers';
+        const path = 'https://502c-34-31-69-109.ngrok-free.app/answers';
         //Utilizziamo axios per fare una richiesta di tipo post passando il percorso e il payload
         axios.post(path, payload)
         .then((res) => {
