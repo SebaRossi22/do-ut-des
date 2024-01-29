@@ -66,7 +66,7 @@
             //Utilizziamo la funzione addfile a cui passiamo il payload appena creato
             this.addFile(payload);
           };
-          //Leggiamo il contenuto del file come stringa di testo
+          //Avvia la lettura del contenuto del file come stringa di testo
           fileReader.readAsText(this.selectedFile);
         } else {
           //Se il file non è stato selezionato metto a true la variabile che mostrerà l'alert
@@ -78,7 +78,7 @@
         //Inviata la richiesta verrà mostrato il componente di loading
         this.loading = true;
         //Percorso a cui puntare per la richiesta
-        const path = 'https://38af-35-204-54-48.ngrok-free.app/questions';
+        const path = 'https://a517-34-16-55-238.ngrok-free.app/questions';
         //Utilizziamo axios per fare una richiesta di tipo post passando il percorso e il payload
         axios.post(path, payload)
         .then((res) => {
