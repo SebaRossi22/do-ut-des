@@ -39,6 +39,10 @@
           <input :value="answer" type="text" class="form-control" aria-describedby="answer" readonly>
         </div>
       </template>
+      <!--Alert per la gestione degli errori nella richiesta al server-->
+      <div v-if="errore" class="alert alert-danger" role="alert">
+        Errore nella richiesta al server (Vedi console)!
+      </div>
     </div>
   </div>
 </template>
@@ -60,6 +64,7 @@ export default {
       result: false, //Boolean che controlla se è presente il risultato
       typeBtn: false, //Boolean per determinare quale button mostrare
       mancanza: false, //Boolean per controllare se l'utente ha inserito la risposta
+      errore: false, //Boolean per gestire gli errori nella richiesta al server
     };
   },
   methods: {
@@ -88,13 +93,15 @@ export default {
         .then((res) => {
           //Se la richiesta va a buon fine e il server restituisce la risposta la assegnamo alla variabile relativa, inoltre arrotondiamo il decimale a due cifre
           this.similarity = (res.data.sim * 100).toFixed(2);
-          //Fermiamo il caricamento, definiamo la presenza del risultato e infine modifichiamo il button
+          //Fermiamo il caricamento, non mostriamo l'alert di errore, definiamo la presenza del risultato e infine modifichiamo il button
           this.loading = false;
+          this.errore = false;
           this.result = true;
           this.typeBtn = true;
         })  
         .catch((error) => {
-          //Se la richiesta non va a buon fine mostriamo l'errore e fermiamo il caricamento
+          //Se la richiesta non va a buon fine mostriamo l'errore in console, mostriamo l'alert di errore e fermiamo il caricamento
+          this.errore = true;
           console.error(error);
           this.loading = false;
         });

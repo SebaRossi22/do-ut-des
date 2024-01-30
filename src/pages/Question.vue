@@ -24,6 +24,10 @@
         <strong role="status">Loading...</strong>
         <div class="spinner-border ms-auto" aria-hidden="true"></div>
       </div>
+      <!--Alert per la gestione degli errori nella richiesta al server-->
+      <div v-if="errore" class="alert alert-danger" role="alert">
+        Errore nella richiesta al server (Vedi console)!
+      </div>
     </div>
   </template>
   
@@ -40,6 +44,7 @@
         answers: [], //Vettore che conterrà le risposte del modello
         loading: false, //Boolean per la gestione del caricamento della richiesta
         mancanza: false, //Boolean per la presenza del file
+        errore: false, //Boolean per gestire gli errori nella richiesta al server
       };
     },
     //Definiamo il componente
@@ -82,12 +87,14 @@
         //Utilizziamo axios per fare una richiesta di tipo post passando il percorso e il payload
         axios.post(path, payload)
         .then((res) => {
-          //Se la richiesta va a buon fine e il server restituisce la risposta la passiamo alla funzione insertQA e fermiamo il caricamento
+          //Se la richiesta va a buon fine e il server restituisce la risposta la passiamo alla funzione insertQA, non mostriamo l'alert di errore e fermiamo il caricamento
           this.insertQA(res.data.msg);
+          this.errore = false;
           this.loading = false;
         })  
         .catch((error) => {
-          //Se la richiesta non va a buon fine mostriamo l'errore e fermiamo il caricamento
+          //Se la richiesta non va a buon fine mostriamo l'errore in console, mostriamo l'alert di errore e fermiamo il caricamento
+          this.errore = true;
           console.error(error);
           this.loading = false;
         });
