@@ -83,7 +83,7 @@
         //Inviata la richiesta verrà mostrato il componente di loading
         this.loading = true;
         //Percorso a cui puntare per la richiesta
-        const path = 'https://502c-34-31-69-109.ngrok-free.app/questions';
+        const path = 'https://892a-34-16-210-209.ngrok-free.app/questions';
         //Utilizziamo axios per fare una richiesta di tipo post passando il percorso e il payload
         axios.post(path, payload)
         .then((res) => {

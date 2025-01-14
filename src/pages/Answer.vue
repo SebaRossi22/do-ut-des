@@ -16,6 +16,11 @@
           <div class="alert alert-success" role="alert">
             Il file {{nomeTxt}} è caricato!
           </div>
+          <div class="card mb-3">
+            <div class="card-body">
+              {{fileContent}}
+            </div>
+          </div>
           <!--Inoltre, se il file è presente, viene mostrato un input dove l'utente può inserire la sua domanda-->
           <div class="input-group mb-3">
             <input v-model="domanda" type="text" class="form-control" placeholder="Inserisci la tua domanda" aria-describedby="button">
@@ -104,7 +109,7 @@
             //Utilizziamo la funzione addfile a cui passiamo il payload appena creato
             this.addFile(payload);
             //Svuotiamo la domanda
-            this.domanda = "";
+            //this.domanda = "";
         } else {
           //Se l'utente non ha inserito la domanda mettendo a true questa variabile verrà mostrato l'alert
           this.mancanzaD = true;
@@ -115,11 +120,11 @@
         //Inviata la richiesta verrà mostrato il componente di loading
         this.loading = true;
         //Percorso a cui puntare per la richiesta
-        const path = 'https://502c-34-31-69-109.ngrok-free.app/answers';
+        const path = 'https://892a-34-16-210-209.ngrok-free.app/answers';
         //Utilizziamo axios per fare una richiesta di tipo post passando il percorso e il payload
         axios.post(path, payload)
         .then((res) => {
-          //Se la richiesta va a buon fine e il server restituisce la risposta la passiamo alla funzione insertQA, non mostriamo l'alert di errore e fermiamo il caricamento
+          //Se la richiesta va a buon fine e il server restituisce la risposta la passiamo alla variabile corrispondente, non mostriamo l'alert di errore e fermiamo il caricamento
           this.risposta = res.data.msg;
           this.errore = false;
           this.loading = false;
